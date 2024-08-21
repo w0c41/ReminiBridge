@@ -42,7 +42,6 @@ npx @ulixee/cloud start
 - 然后才是我们自己的服务, 这是运行在4000端口的本地服务, 这个需要调上面的cloud来工作
 ```bash
 cd ./node_service
-npx @ulixee/cloud start
 npm start
 ```
 
