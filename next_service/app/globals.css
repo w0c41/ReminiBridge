@@ -1,0 +1,414 @@
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+  /* Light mode colors */
+  --background-light: #EBEBEB;
+  --foreground-light: #111111;
+  --button-background-light: #111111;
+  --button-foreground-light: #EBEBEB;
+  --nav-background-light: #111111;
+  --svg-color-light: #111111;
+
+  /* Dark mode colors */
+  --background-dark: #1a1a1a;
+  --foreground-dark: #EBEBEB;
+  --button-background-dark: #EBEBEB;
+  --button-foreground-dark: #111111;
+  --nav-background-dark: #EBEBEB;
+  --svg-color-dark: #EBEBEB;
+
+  /* Chat colors */
+  --input-background-light: #ccc;
+  --input-foreground-light: #000;
+  --input-background-dark: #333;
+  --input-foreground-dark: #fff;
+
+  --user-message-background-light: #000;
+  --user-message-foreground-light: #fff;
+  --user-message-background-dark: #fff;
+  --user-message-foreground-dark: #000;
+
+  --assistant-message-background-light: #efefef;
+  --assistant-message-foreground-light: #000;
+  --assistant-message-background-dark: #555;
+  --assistant-message-foreground-dark: #fff;
+
+  --code-message-background-light: #e9e9e9;
+  --code-message-foreground-light: #000;
+  --code-message-background-dark: #555;
+  --code-message-foreground-dark: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: 16px; /* Base font size */
+}
+
+body {
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.warnings {
+  position: absolute;
+  top: 21%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 300px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  margin: 16px;
+  top: 0;
+  right: 0;
+  color: var(--svg-color-light);
+}
+
+body.dark .logo {
+  color: var(--svg-color-dark);
+}
+
+/* @media (max-width: 1100px) {
+  .logo {
+    width: 24px;
+    height: 24px;
+  }
+} */
+
+.toptitle {
+  width: 132px;
+  height: 32px;
+  position: absolute;
+  margin-top: 22px;
+  margin-right: 32px;
+  top: 0;
+  right: 0;
+  color: var(--svg-color-light);
+}
+
+body.dark .toptitle {
+  color: var(--svg-color-dark);
+}
+
+/* @media (max-width: 1100px) {
+  .toptitle {
+    width: 124px;
+    height: 24px;
+  }
+} */
+
+ul,
+ol {
+  padding-left: 20px;
+}
+
+a {
+  color: blue;
+}
+
+pre {
+  margin: -4px -16px;
+  padding: 20px;
+  white-space: pre-wrap;
+  background-color: #EBEBEB;
+  color: #111111;
+}
+
+button.dark_button {
+  background-color: var(--button-background-light);
+  color: var(--button-foreground-light);  
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button.dark_button:hover {
+  background-color: #ccc;
+}
+
+body.dark button.dark_button {
+  background-color: var(--button-background-dark);
+  color: var(--button-foreground-dark);
+}
+
+body.dark button.dark_button:hover {
+  background-color: #333;
+}
+
+button.dark_button.selected {
+  background-color: #808080;
+  color: var(--button-foreground-light);
+}
+
+body.dark button.dark_button.selected {
+  background-color: #808080;
+  color: var(--button-foreground-light);
+}
+
+.dark_button.sending {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+body.dark .dark_button.sending {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+button.light_button {
+  background-color: var(--button-background-dark);
+  color: var(--button-foreground-dark);
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button.light_button:hover {
+  background-color: #333;
+}
+
+body.dark button.light_button {
+  background-color: var(--button-background-light);
+  color: var(--button-foreground-light);
+}
+
+body.dark button.light_button:hover {
+  background-color: #ccc;
+}
+
+button.light_button.selected {
+  background-color: #808080;
+  color: var(--button-foreground-light);
+}
+
+body.dark button.light_button.selected {
+  background-color: #808080;
+  color: var(--button-foreground-light);
+}
+
+.divbox {
+  gap: 1rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+}
+
+body.dark .divbox {
+  border: 1px solid #333;
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
+}
+
+.title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--foreground-light);
+}
+
+body.dark .title {
+  color: var(--foreground-dark);
+} 
+
+.subtitle {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+body.dark .subtitle {
+  color: var(--foreground-dark);
+}
+
+.input {
+  flex-grow: 1;
+  padding: 16px 24px;
+  margin-right: 10px;
+  border-radius: 60px;
+  border: 2px solid transparent;
+  font-size: 1em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--input-background-light);
+  color: var(--input-foreground-light);
+}
+
+body.dark .input {
+  background-color: var(--input-background-dark);
+  color: var(--input-foreground-dark);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--foreground-light);
+  background-color: #fff;
+}
+
+body.dark .input:focus {
+  border-color: var(--foreground-dark);
+  background-color: var(--background-dark);
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  background-color: var(--input-background-light);
+  color: var(--input-foreground-light);
+}
+
+body.dark .inputField {
+  background-color: var(--input-background-dark);
+  color: var(--input-foreground-dark);
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: var(--foreground-light);
+}
+
+body.dark .inputField:focus {
+  border-color: var(--foreground-dark);
+}
+
+.loginBox {
+  margin: 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: none;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+}
+
+body.dark .loginBox {
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
+}  
+
+.errorText {
+  margin: 1rem;
+  color: red;
+  margin-bottom: 1rem;
+} 
+  
+.linkText {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.resetButton {
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.registrationSuccess {
+  font-size: 1.2em;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .toptitle{
+    width: 120px;
+    height: 32px;
+  }
+
+  .warnings {
+    width: 90%;
+    height: auto;
+  }
+
+  .divbox {
+    padding: 1rem;
+    margin: 1rem;
+  }
+}
+
+@media (orientation: portrait) {
+  .pageContainer {
+    justify-content: center; /* Center vertically */
+    align-items: center;     /* Center horizontally */
+    padding-top: 0;          /* Remove any top padding */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;           /* Full viewport height */
+    width: 100vw;            /* Full viewport width */
+  }
+
+  .title {
+    font-size: 1.5em;
+    text-align: center;      /* Center text horizontally */
+  }
+}

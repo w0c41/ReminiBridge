@@ -1,0 +1,27 @@
+{
+    "name": "next_service",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "next": "^14.1.4",
+        "react": "^18",
+        "react-dom": "^18",
+        "react-markdown": "^9.0.1",
+        "validator": "^13.12.0"
+    },
+    "devDependencies": {
+        "@types/node": "20.12.7",
+        "@types/react": "18.2.79",
+        "@types/validator": "^13.12.0",
+        "typescript": "5.4.5"
+    },
+    "prettier": {
+        "singleQuote": false
+    }
+}
